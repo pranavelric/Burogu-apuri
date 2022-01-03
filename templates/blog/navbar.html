@@ -1,10 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Burogu-apuri</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page"
+                       href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/about-us/' %}active{% endif %} " href="/about-us">About-Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  {% if request.path == '/contact-us/' %}active{% endif %}" href="/contact-us">Contact</a>
+                </li>
 
-</body>
-</html>
+
+            </ul>
+
+            <span class="navbar-text">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+            {% if not request.user.is_authenticated %}
+                <li class="nav-item">
+
+                    <a class="nav-link  {% if request.path == '/register/' %}active{% endif %}" href="/register">Signup</a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link  {% if request.path == '/login/' %}active{% endif %}" href="/login">Login</a>
+
+                </li>
+{% else %}
+                           <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/dashboard/' %}active{% endif %}"  href="/dashboard">Dashboard</a>
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link" href="/logout">Logout</a>
+
+                </li>
+
+{% endif %}
+
+
+            </ul>
+</span>
+        </div>
+    </div>
+</nav>

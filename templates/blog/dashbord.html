@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'blog/base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block msg %}
+    {% if messages %}
+            {% for msg in messages %}
+                <div {% if msg.tags %} class="alert alert-{{ msg.tags }} alert-dismissable fade show"{% endif %}>
+                    <strong>{{ msg }}</strong>
+                    <buttom class="close" type="button" data-dismiss="alert" arua-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </buttom>
+                </div>
+
+            {% endfor %}
+        {% endif %}
+{% endblock msg %}
+{% block content %}
+
+    <div class="col-sm-10">
+
+        <h3 class="mt-5">Dashboard</h3>
+
+
+    </div>
+
+
+
+
+{% endblock %}
