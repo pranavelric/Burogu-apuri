@@ -98,7 +98,7 @@ class Signup(TemplateView):
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
-            group = Group.objects.get(name='Author')
+            group, created = Group.objects.get_or_create(name='Author')
             user.groups.add(group)
             return HttpResponseRedirect('/login')
         context['form'] = form
